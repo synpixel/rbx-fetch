@@ -12,10 +12,10 @@ export type Options = {
 
 export type Response = {
 	success: boolean,
-	statusCode: number?,
-	statusMessage: string?,
-	headers: { [string]: string }?,
-	body: string?,
+	statusCode: number,
+	statusMessage: string,
+	headers: { [string]: string },
+	body: any,
 }
 
 local function fetch(resource: string, options: Options): Promise.TypedPromise<Response>
