@@ -8,6 +8,8 @@ rbx-fetch is a lightweight HttpService wrapper for Roblox, similar to [JavaScrip
 
 ## Examples
 
+### Fetching a JSON response
+
 ```lua
 fetch("https://dummyjson.com/products/1")
     :andThen(function(response: fetch.Response)
@@ -18,6 +20,8 @@ fetch("https://dummyjson.com/products/1")
         warn(response.json())
     end)
 ```
+
+### Fetching a PNG data response
 
 ```lua
 fetch("https://rojo.space/img/logo.png")

@@ -16,6 +16,8 @@ fetch = "synpixel/fetch@0.2.0"
 
 ## Examples
 
+### Fetching a JSON response
+
 ```lua
 fetch("https://dummyjson.com/products/1")
     :andThen(function(response: fetch.Response)
@@ -26,6 +28,8 @@ fetch("https://dummyjson.com/products/1")
         warn(response.json())
     end)
 ```
+
+### Fetching a PNG data response
 
 ```lua
 fetch("https://rojo.space/img/logo.png")
