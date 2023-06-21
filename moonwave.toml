@@ -14,12 +14,12 @@ copyright = "Copyright © 2023 TypeError. Built with Moonwave and Docusaurus"
 enabled = true
 
 [[home.features]]
-title = "Simple"
-description = "rbx-fetch has a simple API, counting 3 functions"
+title = "Simple yet useful"
+description = "rbx-fetch has a simple API, but also allows you to work with PNGs, JSON and text"
 
 [[home.features]]
 title = "Typed"
-description = "rbx-fetch has types for options, responses and even HTTP methods"
+description = "rbx-fetch has types for options, responses, HTTP methods, and more!"
 
 [[home.features]]
 title = "Promise-based"
