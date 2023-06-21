@@ -1,5 +1,6 @@
 local HttpService = game:GetService("HttpService")
 
+local Parser = require(script.Parser)
 local Promise = require(script.Parent.Promise)
 local Response = require(script.Response)
 
@@ -19,6 +20,8 @@ export type Options = {
 }
 
 export type Response = Response.Response
+
+export type PNG = Parser.PNG
 
 --- @class fetch
 local fetch = {}
