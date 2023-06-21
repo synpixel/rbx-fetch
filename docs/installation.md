@@ -9,5 +9,5 @@ sidebar_position: 2
 Put fetch inside your Wally dependencies, as so:
 
 ```toml
-fetch = "synpixel/fetch@0.1.3"
+fetch = "synpixel/fetch@0.2.0"
 ```

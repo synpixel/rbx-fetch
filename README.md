@@ -11,16 +11,15 @@
 Put fetch inside your Wally dependencies, as so:
 
 ```toml
-fetch = "synpixel/fetch@0.1.3"
+fetch = "synpixel/fetch@0.2.0"
 ```
 
 ## Example
 
 ```lua
 fetch("https://dummyjson.com/products/1")
-    :andThen(fetch.decodeJSON)
     :andThen(function(response: fetch.Response)
-        print(response)
+        print(response.json())
     end)
     :catch(function(response: fetch.Response)
         warn("Failed to fetch data")
