@@ -12,6 +12,14 @@ export type Response = {
 	image: (any) -> Promise.TypedPromise<Parser.PNG>,
 }
 
+type Result = {
+	Success: boolean,
+	StatusCode: number,
+	StatusMessage: string,
+	Headers: { [string]: string },
+	Body: any,
+}
+
 --- @class Response
 local Response = {}
 
@@ -27,22 +35,22 @@ local Response = {}
 --- @prop headers { [string]: string }
 --- @within Response
 
-function Response.createResponse(result: {
-	Success: boolean,
-	StatusCode: number,
-	StatusMessage: string,
-	Headers: { [string]: string },
-	Body: any,
-}): Response
+local function processParser(result: Result, parserFn: (any) -> any)
+	return function()
+		return parserFn(result.Body)
+	end
+end
+
+function Response.createResponse(result: Result): Response
 	return {
 		success = result.Success,
 		statusCode = result.StatusCode,
 		statusMessage = result.StatusMessage,
 		headers = result.Headers,
 
-		text = Parser.text,
-		json = Parser.json,
-		image = Parser.image,
+		text = processParser(result, Parser.text),
+		json = processParser(result, Parser.json),
+		image = processParser(result, Parser.image),
 	}
 end
 
