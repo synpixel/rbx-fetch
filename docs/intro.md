@@ -12,13 +12,17 @@ rbx-fetch is a lightweight HttpService wrapper for Roblox, similar to [JavaScrip
 
 ```lua
 fetch("https://dummyjson.com/products/1")
-    :andThen(function(response: fetch.Response)
-        print(response.json())
-    end)
-    :catch(function(response: fetch.Response)
-        warn("Failed to fetch data")
-        warn(response.json())
-    end)
+	:andThen(function(response: fetch.Response)
+		response.json():andThen(function(product)
+			print(product)
+		end)
+	end)
+	:catch(function(response: fetch.Response)
+		warn("Failed to fetch data")
+		response.json():andThen(function(product)
+			warn(product)
+		end)
+	end)
 ```
 
 ### Fetching a PNG data response

@@ -6,10 +6,10 @@
 /*.rbxl.lock
 
 # Luau LSP files
-/*sourcemap.json
+/sourcemap.json
 
 # Wally directories
-/*Packages
+/Packages
 
 # Moonwave directories
-/*build
+/build
