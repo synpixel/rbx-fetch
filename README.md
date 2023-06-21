@@ -14,7 +14,7 @@ Put fetch inside your Wally dependencies, as so:
 fetch = "synpixel/fetch@0.2.0"
 ```
 
-## Example
+## Examples
 
 ```lua
 fetch("https://dummyjson.com/products/1")
@@ -24,5 +24,17 @@ fetch("https://dummyjson.com/products/1")
     :catch(function(response: fetch.Response)
         warn("Failed to fetch data")
         warn(response.json())
+    end)
+```
+
+```lua
+fetch("https://rojo.space/img/logo.png")
+	:andThen(function(response: fetch.Response)
+		response.image():andThen(function(image: fetch.PNG)
+			print(image.Width, image.Height)
+		end)
+	end)
+    :catch(function(response: fetch.Response)
+        warn("Failed to fetch data")
     end)
 ```
