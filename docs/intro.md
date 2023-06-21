@@ -19,9 +19,6 @@ fetch("https://dummyjson.com/products/1")
 	end)
 	:catch(function(response: fetch.Response)
 		warn("Failed to fetch data")
-		response.json():andThen(function(product)
-			warn(product)
-		end)
 	end)
 ```
 
