@@ -47,7 +47,7 @@ function fetch:__call(resource: string, options: Options?): Promise.TypedPromise
 			Body = options and options.body,
 		})
 
-		if result.success then
+		if result.Success then
 			resolve({
 				success = result.Success,
 				statusCode = result.StatusCode,
@@ -70,12 +70,12 @@ local function encodeJSON(input: any): Promise.TypedPromise<string>
 	end)
 end
 
---- @param input string
+--- @param input string | Response
 --- @return Promise<any>
 --- @within fetch
-local function decodeJSON(input: string): Promise.TypedPromise<any>
+local function decodeJSON(input: string | Response): Promise.TypedPromise<any>
 	return Promise.try(function()
-		return HttpService:JSONDecode(input)
+		return HttpService:JSONDecode(if typeof(input) == "string" then input else input.body)
 	end)
 end
 
