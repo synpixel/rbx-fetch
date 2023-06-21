@@ -33,11 +33,11 @@ fetch("https://dummyjson.com/products/1")
 
 ```lua
 fetch("https://rojo.space/img/logo.png")
-	:andThen(function(response: fetch.Response)
+    :andThen(function(response: fetch.Response)
 		response.image():andThen(function(image: fetch.PNG)
 			print(image.Width, image.Height)
 		end)
-	end)
+    end)
     :catch(function(response: fetch.Response)
         warn("Failed to fetch data")
     end)
