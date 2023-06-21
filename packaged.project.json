@@ -1,0 +1,9 @@
+{
+  "name": "rbx-fetch",
+  "tree": {
+    "$path": "Packages",
+    "fetch": {
+      "$path": "src"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# Project place file
+/rbx-fetch.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+# Luau LSP files
+/sourcemap.json
+
+# Wally directories
+/Packages

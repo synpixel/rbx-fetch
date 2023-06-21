@@ -1,0 +1,9 @@
+[package]
+name = "synpixel/rbx-fetch"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+license = "MIT"
+
+[dependencies]
+Promise = "lukadev-0/typed-promise@4.0.2"
