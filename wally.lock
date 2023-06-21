@@ -14,5 +14,10 @@ dependencies = [["Promise", "evaera/promise@4.0.0"]]
 
 [[package]]
 name = "synpixel/fetch"
+version = "0.1.3"
+dependencies = [["PNG", "synpixel/png@0.1.2"], ["Promise", "lukadev-0/typed-promise@4.0.2"]]
+
+[[package]]
+name = "synpixel/png"
 version = "0.1.2"
-dependencies = [["Promise", "lukadev-0/typed-promise@4.0.2"]]
+dependencies = []

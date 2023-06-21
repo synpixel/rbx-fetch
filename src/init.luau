@@ -1,6 +1,7 @@
 local HttpService = game:GetService("HttpService")
 
 local Promise = require(script.Parent.Promise)
+local Response = require(script.Response)
 
 --- @type HttpMethod "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "CONNECT" | "OPTIONS" | "TRACE" | "PATCH"
 --- @within fetch
@@ -17,44 +18,15 @@ export type Options = {
 	body: string?,
 }
 
---- @interface Response
---- .success boolean
---- .statusCode number
---- .statusMessage string
---- .headers { [string]: string }
---- .body any
---- @within fetch
-export type Response = {
-	success: boolean,
-	statusCode: number,
-	statusMessage: string,
-	headers: { [string]: string },
-	body: any,
-}
+export type Response = Response.Response
 
 --- @class fetch
 local fetch = {}
 
-local function processResult(result: {
-	Success: boolean,
-	StatusCode: number,
-	StatusMessage: string,
-	Headers: { [string]: string },
-	Body: any,
-}): Response
-	return {
-		success = result.Success,
-		statusCode = result.StatusCode,
-		statusMessage = result.StatusMessage,
-		headers = result.Headers,
-		body = result.Body,
-	}
-end
-
 --- @param resource string
 --- @param options? Options
 --- @return Promise<Response>
-function fetch:__call(resource: string, options: Options?): Promise.TypedPromise<Response>
+function fetch:__call(resource: string, options: Options?): Promise.TypedPromise<Response.Response>
 	return Promise.new(function(resolve, reject)
 		local result = HttpService:RequestAsync({
 			Url = resource,
@@ -64,32 +36,11 @@ function fetch:__call(resource: string, options: Options?): Promise.TypedPromise
 		})
 
 		if result.Success then
-			resolve(processResult(result))
+			resolve(Response.createResponse(result))
 		else
-			reject(processResult(result))
+			reject(Response.createResponse(result))
 		end
 	end)
 end
 
---- @param input any
---- @return Promise<string>
---- @within fetch
-local function encodeJSON(input: any): Promise.TypedPromise<string>
-	return Promise.try(function()
-		return HttpService:JSONEncode(input)
-	end)
-end
-
---- @param input string | Response
---- @return Promise<any>
---- @within fetch
-local function decodeJSON(input: string | Response): Promise.TypedPromise<any>
-	return Promise.try(function()
-		return HttpService:JSONDecode(if typeof(input) == "string" then input else input.body)
-	end)
-end
-
-return setmetatable({
-	encodeJSON = encodeJSON,
-	decodeJSON = decodeJSON,
-}, fetch)
+return setmetatable({}, fetch)

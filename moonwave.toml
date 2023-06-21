@@ -1,6 +1,11 @@
 title = "fetch"
 gitSourceBranch = "main"
 
+classOrder = [
+    "fetch",
+    "Response"
+]
+
 [footer]
 style = "dark"
 copyright = "Copyright © 2023 TypeError. Built with Moonwave and Docusaurus"
