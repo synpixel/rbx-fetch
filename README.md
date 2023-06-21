@@ -11,7 +11,7 @@
 Put fetch inside your Wally dependencies, as so:
 
 ```toml
-fetch = "synpixel/fetch@0.1.1"
+fetch = "synpixel/fetch@0.1.3"
 ```
 
 ## Example
@@ -22,7 +22,8 @@ fetch("https://dummyjson.com/products/1")
     :andThen(function(response: fetch.Response)
         print(response)
     end)
-    :catch(function()
+    :catch(function(response: fetch.Response)
         warn("Failed to fetch data")
+        warn(response)
     end)
 ```

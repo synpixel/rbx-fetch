@@ -35,6 +35,22 @@ export type Response = {
 --- @class fetch
 local fetch = {}
 
+local function processResult(result: {
+	Success: boolean,
+	StatusCode: number,
+	StatusMessage: string,
+	Headers: { [string]: string },
+	Body: any,
+}): Response
+	return {
+		success = result.Success,
+		statusCode = result.StatusCode,
+		statusMessage = result.StatusMessage,
+		headers = result.Headers,
+		body = result.Body,
+	}
+end
+
 --- @param resource string
 --- @param options? Options
 --- @return Promise<Response>
@@ -48,15 +64,9 @@ function fetch:__call(resource: string, options: Options?): Promise.TypedPromise
 		})
 
 		if result.Success then
-			resolve({
-				success = result.Success,
-				statusCode = result.StatusCode,
-				statusMessage = result.StatusMessage,
-				headers = result.Headers,
-				body = result.Body,
-			})
+			resolve(processResult(result))
 		else
-			reject(result.StatusMessage, result.StatusCode)
+			reject(processResult(result))
 		end
 	end)
 end

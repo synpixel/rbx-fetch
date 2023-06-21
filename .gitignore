@@ -10,3 +10,6 @@
 
 # Wally directories
 /Packages
+
+# Moonwave directories
+/build
