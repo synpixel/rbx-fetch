@@ -21,7 +21,7 @@ fetch = "synpixel/fetch@0.2.3"
 ```lua
 fetch("https://dummyjson.com/products/1")
 	:andThen(function(response: fetch.Response)
-        local product = response.json():expect()
+		local product = response.json():expect()
 		print(product)
 	end)
 	:catch(function(response: fetch.Response)

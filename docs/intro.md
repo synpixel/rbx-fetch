@@ -13,7 +13,7 @@ rbx-fetch is a lightweight HttpService wrapper for Roblox, similar to [JavaScrip
 ```lua
 fetch("https://dummyjson.com/products/1")
 	:andThen(function(response: fetch.Response)
-        local product = response.json():expect()
+		local product = response.json():expect()
 		print(product)
 	end)
 	:catch(function(response: fetch.Response)
