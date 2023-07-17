@@ -1,8 +1,0 @@
-[package]
-name = "synpixel/rbx-fetch-example"
-version = "0.1.0"
-registry = "https://github.com/UpliftGames/wally-index"
-realm = "shared"
-
-[dependencies]
-fetch = "synpixel/fetch@0.2.3"
